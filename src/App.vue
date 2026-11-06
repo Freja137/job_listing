@@ -17,10 +17,13 @@ function getTags (job) {
 </script>
 
 <template>
+  <header class="site-header">
+    <h1 class="visually-hidden">Job listings</h1>
+  </header>
   <!-- Sidens hovedindhold -->
    <main>
     <!-- Viser jobs i en listevisning -->
-    <ul>
+    <ul class="job-list">
       <!-- Èt listepunkt pr. job, hvor id'et bruges som unik nøgle -->
       <li v-for="job in jobs" :key="job.id" class="job-card" :class="{featured: job.featured}">
         <img class="job-logo" :src="job.logo" :alt="job.company + ' logo'">
@@ -35,20 +38,21 @@ function getTags (job) {
             <!-- Vises kun hvis jobbet er featured -->
             <span v-if="job.featured" class="badge badge-featured">Featured</span>
           </div>
-        </div>
-        <ul class="job-tags">
-          <li v-for="tag in getTags(job)" :key="tag">
-            <button type="button" class="tag"> {{ tag }}</button>
-          </li>
-        </ul>
+          <h2>{{ job.position }}</h2>
+  
+          <ul class="job-meta">
+            <li>{{ job.postedAt }}</li>
+            <li>{{ job.contract }}</li>
+            <li>{{ job.location }}</li>
+          </ul>
+  
+      </div>
+      <ul class="job-tags">
+        <li v-for="tag in getTags(job)" :key="tag">
+          <button type="button" class="tag">{{ tag }}</button>
+        </li>
+      </ul>
 
-        <h2>{{ job.position }}</h2>
-
-        <ul class="job-meta">
-          <li>{{ job.postedAt }}</li>
-          <li>{{ job.contract }}</li>
-          <li>{{ job.location }}</li>
-        </ul>
       </li>
     </ul>
    </main>
