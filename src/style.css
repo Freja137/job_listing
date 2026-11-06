@@ -71,3 +71,38 @@ main {
 .featured {
   border-left: 5px solid var(--cyan);
 }
+
+.job-company {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.job-company p {
+  margin: 0;
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.badge {
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px 8px 3px;
+  border-radius: 12px;
+}
+
+.badge-new {
+  background-color: var(--cyan);
+}
+
+.badge-featured {
+  background-color: var(--dark);
+}
+
+.job-info h2 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 12px 0;
+}

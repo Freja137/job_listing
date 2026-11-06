@@ -10,7 +10,7 @@ const jobs = ref(data);
 
 //Samler alle tags for ét job i én liste
 function getTags (job) {
-  // role og level er enkelte ord. languages og tools er lister, som foldes ud med ...
+  // role og level er enkelte ord. languages og tools er lister, som bliver foldt ud med "..."
   return [job.role,job.level, ...job.languages, ...job.tools];
 }
 
