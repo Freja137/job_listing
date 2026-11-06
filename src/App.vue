@@ -11,7 +11,7 @@ const jobs = ref(data);
 //Samler alle tags for ét job i én liste
 function getTags (job) {
   // role og level er enkelte ord. languages og tools er lister, som foldes ud med ...
-  return [job.role,job.level, ...job.language, ...job.tools];
+  return [job.role,job.level, ...job.languages, ...job.tools];
 }
 
 </script>
@@ -23,17 +23,17 @@ function getTags (job) {
     <ul>
       <!-- Èt listepunkt pr. job, hvor id'et bruges som unik nøgle -->
       <li v-for="job in jobs" :key="job.id" class="job-card" :class="{featured: job.featured}">
-        <img class="job-logo" :src="job.logo" :alt="job.company + 'logo'">
+        <img class="job-logo" :src="job.logo" :alt="job.company + ' logo'">
         
         <!-- Alt tekst omkring jobbet -->
         <div class="job-info">
           <div class="job-company">
             <p>{{ job.company }}</p>
             <!-- Vises kun hvis jobbet er nyt -->
-            <span v-if="job.new" class="badgde badge-new">New!</span>
+            <span v-if="job.new" class="badge badge-new">New!</span>
 
             <!-- Vises kun hvis jobbet er featured -->
-            <span v-if="job.featured" class="badgde badge-featured">Featured</span>
+            <span v-if="job.featured" class="badge badge-featured">Featured</span>
           </div>
         </div>
         <ul class="job-tags">
