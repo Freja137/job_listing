@@ -34,6 +34,15 @@ const filteredJobs = computed(() => {
   });
 });
 
+//Fjerner et filter ved at beholde alle de andre
+function removeFilter (tag) {
+  filters.value=filters.value.filter((filter)=>filter !==tag);
+}
+
+function clearFilters() {
+  filters.value= [];
+}
+
 </script>
 
 <template>
@@ -43,6 +52,23 @@ const filteredJobs = computed(() => {
   <!-- Sidens hovedindhold -->
    <main>
     <!-- Viser jobs i en listevisning -->
+
+    <!-- Filter sektionen, vises kun hvis der mindst er valgt ét filter -->
+     <div v-if="filters.length" class="filter-bar">
+      <!-- De valgte filtre -->
+       <ul class="filter-list">
+        <li v-for="filter in filters" :key="filter" class="filter-item">
+          <span class="filter-name">
+            {{ filter }}
+          </span>
+          <button type="button" class="filter-remove" :aria-label="'Remove' + filter" @click="removeFilter(filter)">
+            <img src="/public/images/icon-remove.svg" :alt="'Remove' + filter">
+          </button>
+        </li>
+       </ul>
+       <button type="button" class="filter-clear" @click="clearFilters">Clear</button>
+     </div>
+
     <ul class="job-list">
       <!-- Èt listepunkt pr. job, hvor id'et bruges som unik nøgle -->
       <li v-for="job in filteredJobs" :key="job.id" class="job-card" :class="{ featured: job.featured }">

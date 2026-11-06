@@ -155,6 +155,72 @@ main {
   height: 48px;
 }
 
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px 24px;
+  margin: -92px 0 40px;
+  box-shadow: 15px 20px -5px hsla(180, 29%, 50%, 0.15);
+}
+
+.filter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.filter-item {
+  display: flex;
+}
+
+.filter-name {
+  color: var(--cyan);
+  background-color: var(--tag-bg);
+  font-weight: 700;
+  padding: 8px 8px 5px;
+  border-radius: 4px 0 0 4px;
+}
+
+.filter-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  background-color: var(--cyan);
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+/* Krydset bliver mørkt ved hover og tastaturfokus */
+.filter-remove:hover,
+.filter-remove:focus-visible {
+  background-color: var(--dark);
+}
+
+.filter-clear {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-clear:hover,
+.filter-clear:focus-visible {
+  color: var(--cyan);
+  text-decoration: underline;
+}
+
 @media(min-width:768px) {
   .site-header {
     background-image: url("../public/images/bg-header-desktop.svg");
