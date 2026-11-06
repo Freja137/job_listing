@@ -1,0 +1,9 @@
+/* Variabler */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=League+Spartan:wght@100..900&family=Manrope:wght@200..800&display=swap');
+
+:root {
+  --primaryColor: hsl(180, 29%, 50%);
+  --green: hsl(180, 52%, 96%);
+  --gray: hsl(180, 8%, 52%);
+  --green900: hsl(180, 14%, 20%);
+}
