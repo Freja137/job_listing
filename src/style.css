@@ -31,12 +31,6 @@ body {
   background-repeat: no-repeat;
 }
 
-@media(min-width:768px) {
-  .site-header {
-    background-image: url("../public/images/bg-header-desktop.svg");
-  }
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -159,6 +153,12 @@ main {
   top: -24px;
   width: 48px;
   height: 48px;
+}
+
+@media(min-width:768px) {
+  .site-header {
+    background-image: url("../public/images/bg-header-desktop.svg");
+  }
 }
 
 @media (min-width: 900px) {

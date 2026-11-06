@@ -1,6 +1,6 @@
 <script setup>
-//Henter ref, så Vue kan holde øje med listen
-import {ref} from "vue";
+//Henter ref og computed, så Vue kan holde øje med listen
+import {ref, computed} from "vue";
 
 //Henter jobdata fra data.json
 import data from "./data.json";
@@ -14,6 +14,26 @@ function getTags (job) {
   return [job.role,job.level, ...job.languages, ...job.tools];
 }
 
+// de tags brugeren har valgt at filtrere på, starter tom
+const filters = ref([]);
+
+//Tilføjer et tag til filtrene, hvis det ikke allerede er der
+function addFilter(tag) {
+  if(!filters.value.includes(tag)){
+    filters.value.push(tag);
+  }
+}
+
+//Listen af jobs, der skal vises. Regnes automatisk ud igen, når filtres ændres sig
+const filteredJobs = computed(() => {
+  //Beholder kun de jobs, der passer
+  return jobs.value.filter((job) => {
+    const tags = getTags(job);
+    //Jobbet passer, hvis det har hvert eneste valgte filter
+    return filters.value.every((filter) => tags.includes(filter));
+  });
+});
+
 </script>
 
 <template>
@@ -25,7 +45,7 @@ function getTags (job) {
     <!-- Viser jobs i en listevisning -->
     <ul class="job-list">
       <!-- Èt listepunkt pr. job, hvor id'et bruges som unik nøgle -->
-      <li v-for="job in jobs" :key="job.id" class="job-card" :class="{featured: job.featured}">
+      <li v-for="job in filteredJobs" :key="job.id" class="job-card" :class="{ featured: job.featured }">
         <img class="job-logo" :src="job.logo" :alt="job.company + ' logo'">
         
         <!-- Alt tekst omkring jobbet -->
@@ -49,7 +69,8 @@ function getTags (job) {
       </div>
       <ul class="job-tags">
         <li v-for="tag in getTags(job)" :key="tag">
-          <button type="button" class="tag">{{ tag }}</button>
+          <!-- Klik tilføjer tagget som filter -->
+          <button type="button" class="tag" @click="addFilter(tag)">{{ tag }}</button>
         </li>
       </ul>
 
