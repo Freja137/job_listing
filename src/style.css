@@ -160,3 +160,34 @@ main {
   width: 48px;
   height: 48px;
 }
+
+@media (min-width: 900px) {
+  .job-list {
+    gap: 24px;
+  }
+
+  .job-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 32px 40px;
+  }
+
+  .job-logo {
+    position: static;
+    width: 88px;
+    height: 88px;
+  }
+
+  .job-info h2 {
+    font-size: 22px;
+    margin: 8px 0;
+  }
+
+  .job-tags {
+    margin: 0 0 0 auto;
+    border-top: none;
+    padding-top: none;
+    justify-content: flex-end;
+  }
+}
