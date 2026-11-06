@@ -39,6 +39,7 @@ function removeFilter (tag) {
   filters.value=filters.value.filter((filter)=>filter !==tag);
 }
 
+/* Fjerner alle filtrer på én gang */
 function clearFilters() {
   filters.value= [];
 }
@@ -51,8 +52,6 @@ function clearFilters() {
   </header>
   <!-- Sidens hovedindhold -->
    <main>
-    <!-- Viser jobs i en listevisning -->
-
     <!-- Filter sektionen, vises kun hvis der mindst er valgt ét filter -->
      <div v-if="filters.length" class="filter-bar">
       <!-- De valgte filtre -->
@@ -61,8 +60,9 @@ function clearFilters() {
           <span class="filter-name">
             {{ filter }}
           </span>
-          <button type="button" class="filter-remove" :aria-label="'Remove' + filter" @click="removeFilter(filter)">
-            <img src="/public/images/icon-remove.svg" :alt="'Remove' + filter">
+          <!-- Kryds, der fjerner netop dette filter -->
+          <button type="button" class="filter-remove" @click="removeFilter(filter)">
+              <img src="/images/icon-remove.svg" :alt="'Remove ' + filter">
           </button>
         </li>
        </ul>

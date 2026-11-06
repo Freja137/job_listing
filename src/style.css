@@ -256,4 +256,8 @@ main {
     padding-top: none;
     justify-content: flex-end;
   }
+
+  .filter-bar {
+    padding: 20px 40px;
+  }
 }
