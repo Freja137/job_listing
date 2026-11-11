@@ -5,6 +5,9 @@ import {ref, computed} from "vue";
 //Henter jobdata fra data.json
 import data from "./data.json";
 
+//Henter kryds-ikonet, så Vite pakker det med og finder den rigtige sti
+import iconRemove from "./assets/icon-remove.svg";
+
 //Gemmer dataen i ref variable
 const jobs = ref(data);
 
@@ -39,7 +42,7 @@ function removeFilter (tag) {
   filters.value=filters.value.filter((filter)=>filter !==tag);
 }
 
-/* Fjerner alle filtrer på én gang */
+// Fjerner alle filtrer på én gang
 function clearFilters() {
   filters.value= [];
 }
@@ -62,7 +65,7 @@ function clearFilters() {
           </span>
           <!-- Kryds, der fjerner netop dette filter -->
           <button type="button" class="filter-remove" @click="removeFilter(filter)">
-              <img src="/images/icon-remove.svg" :alt="'Remove ' + filter">
+              <img :src="iconRemove" :alt="'Remove ' + filter">
           </button>
         </li>
        </ul>
@@ -91,8 +94,7 @@ function clearFilters() {
             <li>{{ job.contract }}</li>
             <li>{{ job.location }}</li>
           </ul>
-  
-      </div>
+        </div>
       <ul class="job-tags">
         <li v-for="tag in getTags(job)" :key="tag">
           <!-- Klik tilføjer tagget som filter -->
